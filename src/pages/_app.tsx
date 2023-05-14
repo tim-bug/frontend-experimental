@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import { GeistProvider, CssBaseline } from "@geist-ui/core";
 import { Poppins } from "@next/font/google";
 import type { AppProps } from "next/app";
 import GlobalProvider from "lib/Context";
@@ -31,12 +30,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <GlobalProvider>
-      <GeistProvider>
-        <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </GeistProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </GlobalProvider>
   );
 }

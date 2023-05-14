@@ -2,10 +2,6 @@ import { memo, useCallback, useState, useMemo } from "react";
 import { MenuSVG } from "lib/Icons";
 import dynamic from "next/dynamic";
 import { useCtx } from "lib/Context";
-const DynamicSidebarProfile = dynamic(() => import("./SidebarProfile"), {
-  ssr: false,
-  loading: () => <></>,
-});
 
 const DynamicComponentMenu = dynamic(() => import("lib/Route"), {
   ssr: false,
@@ -45,9 +41,8 @@ const Sidebar = memo(() => {
             </button>
           );
         }, [open])}
-        <DynamicSidebarProfile open={open} />
 
-        <div className="sidescroll w-full h-screen overflow-y-scroll">
+        <div className="sidescroll w-full h-screen overflow-y-scroll pt-20">
           <div className="rounded-xl overflow-hidden mx-2 mb-64">
             <DynamicComponentMenu
               open={open}

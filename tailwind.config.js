@@ -2,11 +2,11 @@
 
 const colors = require("tailwindcss/colors");
 
-delete colors['lightBlue'];
-delete colors['warmGray'];
-delete colors['trueGray'];
-delete colors['coolGray'];
-delete colors['blueGray'];
+delete colors["lightBlue"];
+delete colors["warmGray"];
+delete colors["trueGray"];
+delete colors["coolGray"];
+delete colors["blueGray"];
 
 module.exports = {
   content: [
@@ -47,7 +47,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("daisyui")],
+  plugins: [require("@tailwindcss/forms")],
 };
 
 // --blue: var(--main);
