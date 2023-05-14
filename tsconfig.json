@@ -24,6 +24,6 @@
     "**/*.ts",
     "**/*.tsx",
     "src/pages/dashboard/[...project]"
-, "component/Login/SIgnUpForm"  ],
+, "component/Login/SIgnUpForm", "component/Table/CustomerService.js"  ],
   "exclude": ["node_modules"]
 }

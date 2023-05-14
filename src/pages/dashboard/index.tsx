@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Screen from "component/Layout/Screen";
 import { Item } from "lib/Interface";
 import Layout from "component/Layout";
+import Table from "component/Table/Table";
 function createGuidId() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
@@ -158,6 +159,11 @@ const Dashboard = () => {
           </DragDropContext>
         )}
       </>
+      {/* table */}
+      <div>
+        <h4 className="text-4xl font-bold text-gray-600">TABLE-PRIME REACT</h4>
+        <Table />
+      </div>
     </Screen>
   );
 };
