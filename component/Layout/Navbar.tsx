@@ -22,7 +22,7 @@ const Navbar = memo(() => {
 
   return (
     <>
-      <div className="bg-white w-full fixed h-20 top-0 z-30">
+      <div className="bg-gray-200 w-full fixed h-20 top-0 z-30">
         <div className="h-20  items-center justify-end relative inline-flex w-full gap-4 shadow">
           <button
             onClick={handleFullScreenClick}
@@ -43,9 +43,8 @@ const Navbar = memo(() => {
               </p>
             </div>
             <div className="bg-white rounded-full w-12 h-12 overflow-hidden border border-gray-500">
-              {state?.profile === undefined ? (
-                <div className="w-full h-full bg-gray-200" />
-              ) : (
+              <div className="w-full h-full bg-gray-200" />
+              {/* ) : (
                 <Image
                   // @ts-ignore
                   src={state.profile.image}
@@ -55,7 +54,7 @@ const Navbar = memo(() => {
                   height={500}
                   style={{ objectFit: "cover" }}
                 />
-              )}
+              )} */}
             </div>
           </div>
         </div>

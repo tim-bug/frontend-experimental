@@ -10,7 +10,6 @@ const DynamicComponentMenu = dynamic(() => import("lib/Route"), {
 
 const Sidebar = memo(() => {
   const [open, setOpen] = useState<boolean>(true);
-  const { state } = useCtx();
   const opens = useCallback(() => {
     setOpen((v) => !v);
   }, []);

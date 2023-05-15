@@ -11,7 +11,6 @@ import {
   BuildingNav,
   DashboardNav,
 } from "lib/Icons";
-import { IRoles } from "./Interface";
 import { memo } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -203,7 +202,12 @@ export const ADMINISTRATOR = [
 //   );
 // };
 
-const ComponentMenu: React.FC<IRoles> = ({ role, open, setOpen }) => {
+interface Props {
+  open: boolean;
+  setOpen: (s: boolean) => void;
+}
+
+const ComponentMenu = ({ open, setOpen }: Props) => {
   const router = useRouter();
 
   return (
@@ -238,7 +242,7 @@ const ComponentMenu: React.FC<IRoles> = ({ role, open, setOpen }) => {
                   : null
               } ${
                 open ? "opacity-0" : "opacity-100"
-              } hover:text-white rounded-md text-gray-200 text-sm font-semibold items-start flex-col gap-2 p-2`}
+              } hover:text-white rounded-md text-gray-200 text-sm font-normal items-start flex-col gap-2 p-2`}
             >
               <button
                 onClick={() => setOpen(true)}
@@ -291,7 +295,7 @@ const ComponentMenu: React.FC<IRoles> = ({ role, open, setOpen }) => {
                           : null
                       } ${
                         open ? "opacity-0" : "opacity-100"
-                      } hover:text-white rounded-md text-gray-200 text-sm font-semibold items-start flex-col gap-2 p-2`}
+                      } hover:text-white rounded-md text-gray-200 text-sm font-normal items-start flex-col gap-2 p-2`}
                     >
                       <button
                         onClick={() => setOpen(true)}

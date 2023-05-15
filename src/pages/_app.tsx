@@ -1,3 +1,5 @@
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
 import "@/styles/globals.css";
 import { Poppins } from "@next/font/google";
 import type { AppProps } from "next/app";
