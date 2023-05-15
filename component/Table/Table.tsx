@@ -97,12 +97,12 @@ export default function BasicFilterDemo() {
     }
   };
 
-  // useEffect(() => {
-  //   CustomerService.getCustomersMedium().then((data: Customer[]) => {
-  //     setCustomers(getCustomers(data));
-  //     setLoading(false);
-  //   });
-  // }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    CustomerService.getCustomersMedium().then((data: Customer[]) => {
+      setCustomers(getCustomers(data));
+      setLoading(false);
+    });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getCustomers = (data: Customer[]) => {
     return [...(data || [])].map((d) => {
