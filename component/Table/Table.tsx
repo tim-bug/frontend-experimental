@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import { classNames } from "primereact/utils";
 import { FilterMatchMode, FilterOperator } from "primereact/api";
 import { DataTable, DataTableFilterMeta } from "primereact/datatable";
-import { Column } from "primereact/column";
+import { Column, ColumnFilterElementTemplateOptions } from "primereact/column";
 import { InputText } from "primereact/inputtext";
 import { Dropdown, DropdownChangeEvent } from "primereact/dropdown";
 import { MultiSelect, MultiSelectChangeEvent } from "primereact/multiselect";
@@ -23,12 +23,21 @@ interface RepresentativeOption {
   image: string;
 }
 
+interface Country {
+  code: string;
+  name: string;
+}
+
+interface Representative {
+  name: string;
+  image: string;
+}
 interface Customer {
   id: number;
   name: string;
   country: Country;
   company: string;
-  date: string;
+  date: Date;
   status: string;
   verified: boolean;
   activity: number;
@@ -37,7 +46,7 @@ interface Customer {
 }
 
 export default function BasicFilterDemo() {
-  const [customers, setCustomers] = useState<Customer[] | null>(null);
+  const [customers, setCustomers] = useState<Customer[]>([]); // Provide an empty array as the default value
   const [filters, setFilters] = useState<DataTableFilterMeta>({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
@@ -60,7 +69,8 @@ export default function BasicFilterDemo() {
     { name: "Stephen Shaw", image: "stephenshaw.png" },
     { name: "XuXue Feng", image: "xuxuefeng.png" },
   ]);
-  const [statuses] = useState<string>([
+
+  const [statuses] = useState<string[]>([
     "unqualified",
     "qualified",
     "new",
@@ -87,12 +97,12 @@ export default function BasicFilterDemo() {
     }
   };
 
-  useEffect(() => {
-    CustomerService.getCustomersMedium().then((data: Customer[]) => {
-      setCustomers(getCustomers(data));
-      setLoading(false);
-    });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   CustomerService.getCustomersMedium().then((data: Customer[]) => {
+  //     setCustomers(getCustomers(data));
+  //     setLoading(false);
+  //   });
+  // }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getCustomers = (data: Customer[]) => {
     return [...(data || [])].map((d) => {
@@ -106,7 +116,9 @@ export default function BasicFilterDemo() {
     const value = e.target.value;
     let _filters = { ...filters };
 
-    _filters["global"].value = value;
+    if ("value" in _filters["global"]) {
+      _filters["global"].value = value;
+    }
 
     setFilters(_filters);
     setGlobalFilterValue(value);

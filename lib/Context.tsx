@@ -33,8 +33,13 @@ const NotificationDate = memo((props: DateProps): JSX.Element => {
 NotificationDate.displayName = "NotificationDate";
 Dates.displayName = "Dates";
 
+// const INITIAL_STATE: State = {
+//   id: "",
+// };
+
 const INITIAL_STATE: State = {
-  id: "",
+  id: "" as string,
+  profile: undefined,
 };
 
 const GlobalContext = createContext<GlobalContextType>({} as GlobalContextType);
